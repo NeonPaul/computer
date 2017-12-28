@@ -1,0 +1,25 @@
+{
+  "name": "computer",
+  "version": "1.0.0",
+  "description": "Home Ass",
+  "main": "index.js",
+  "dependencies": {
+    "node-record-lpcm16": "^0.3.0",
+    "snowboy": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neonpaul/computer.git"
+  },
+  "author": "Paul Kiddle",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/neonpaul/computer/issues"
+  },
+  "homepage": "https://github.com/neonpaul/computer#readme",
+  "private": true
+}
