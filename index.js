@@ -16,14 +16,25 @@ const detector = new Detector({
   audioGain: 2.0
 });
 
+let record = false;
+let recordBuffer;
+
 detector.on("silence", function() {
   console.log("silence");
+  if (record) {
+    record = false;
+    console.log("Got recording");
+    console.log(recordBuffer);
+  }
 });
 
 detector.on("sound", function(buffer) {
   // <buffer> contains the last chunk of the audio that triggers the "sound"
   // event. It could be written to a wav stream.
   console.log("sound");
+  if (record) {
+    recordBuffer = recordBuffer.concat(buffer);
+  }
 });
 
 detector.on("error", function() {
@@ -37,6 +48,9 @@ detector.on("hotword", function(index, hotword, buffer) {
   // data after the hotword.
   console.log(buffer);
   console.log("hotword", index, hotword);
+  if (recording) return;
+  record = true;
+  recordBuffer = new Buffer();
 });
 
 const mic = record.start({
